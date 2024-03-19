@@ -12,8 +12,8 @@ def close_db(error):
 
 
 @app.route('/', strict_slashes=False)
-def hbnb():
-    """ HBNB is alive! """
+def index():
+    """ index page """
     return render_template('index.html')
 
 
