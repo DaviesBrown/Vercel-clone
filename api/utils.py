@@ -2,7 +2,6 @@
 import boto3
 from boto3.s3 import transfer
 from botocore.exceptions import ClientError
-import git
 import logging
 import os
 from typing import List
@@ -32,12 +31,11 @@ def get_all_files(path: str) -> List[str]:
 def upload_file_to_S3(filepath: str, bucket: str) -> bool:
     """ Uploads file to S3 given a path """
     object_name = os.path.basename(filepath)
+    transfer_client = get_transfer_client()
     try:
-        transfer_client = get_transfer_client()
+        pass
         transfer_client.upload_file(filepath, bucket, object_name)
     except ClientError as e:
         logging.error(e)
         return False
     return True
-
-upload_file_to_S3('/home/brownian77/christmas-card/index.html', 'hello')
