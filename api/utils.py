@@ -15,7 +15,12 @@ def generate() -> str:
 
 def get_transfer_client() -> transfer.S3Transfer:
     """ returns a transfer client """
-    s3_client = boto3.client("s3")
+    session = boto3.Session(
+        aws_access_key_id="",
+        aws_secret_access_key="",
+        aws_session_token=""
+    )
+    s3_client = session.client()
     transfer_client = transfer.S3Transfer(s3_client)
     return transfer_client
 
