@@ -1,0 +1,6 @@
+boto3
+gitpython
+Flask
+redis
+flasgger
+flask_cors
